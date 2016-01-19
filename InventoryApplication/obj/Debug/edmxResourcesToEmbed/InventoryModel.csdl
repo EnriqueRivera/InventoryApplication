@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InventoryDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="InventoryDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Arrives" EntityType="InventoryDatabaseModel.Arrive" />
+    <EntitySet Name="Departures" EntityType="InventoryDatabaseModel.Departure" />
+    <EntitySet Name="Products" EntityType="InventoryDatabaseModel.Product" />
+    <EntitySet Name="Users" EntityType="InventoryDatabaseModel.User" />
+    <AssociationSet Name="FK_Arrives_ProductId" Association="InventoryDatabaseModel.FK_Arrives_ProductId">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Arrive" EntitySet="Arrives" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Departures_ProductId" Association="InventoryDatabaseModel.FK_Departures_ProductId">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Departure" EntitySet="Departures" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Arrive">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Product" Relationship="InventoryDatabaseModel.FK_Arrives_ProductId" FromRole="Arrive" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Departure">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Petitioner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Folio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="InventoryDatabaseModel.FK_Departures_ProductId" FromRole="Departure" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Arrives" Relationship="InventoryDatabaseModel.FK_Arrives_ProductId" FromRole="Product" ToRole="Arrive" />
+    <NavigationProperty Name="Departures" Relationship="InventoryDatabaseModel.FK_Departures_ProductId" FromRole="Product" ToRole="Departure" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Arrives_ProductId">
+    <End Type="InventoryDatabaseModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="InventoryDatabaseModel.Arrive" Role="Arrive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Arrive">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Departures_ProductId">
+    <End Type="InventoryDatabaseModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="InventoryDatabaseModel.Departure" Role="Departure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Departure">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

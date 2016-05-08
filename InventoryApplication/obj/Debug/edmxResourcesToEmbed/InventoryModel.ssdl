@@ -19,6 +19,7 @@
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="Petitioner" Type="varchar(max)" />
     <Property Name="Folio" Type="varchar(max)" />
+    <Property Name="Area" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Products">
     <Key>

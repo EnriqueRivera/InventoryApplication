@@ -22,6 +22,6 @@ C:\Users\Enrique Rivera\Documents\Visual Studio 2013\Projects\InventoryApplicati
 C:\Users\Enrique Rivera\Documents\Visual Studio 2013\Projects\InventoryApplication\InventoryApplication\bin\Release\ClosedXML.dll
 C:\Users\Enrique Rivera\Documents\Visual Studio 2013\Projects\InventoryApplication\InventoryApplication\bin\Release\DocumentFormat.OpenXml.dll
 C:\Users\Enrique Rivera\Documents\Visual Studio 2013\Projects\InventoryApplication\InventoryApplication\bin\Release\ClosedXML.xml
-C:\Users\Enrique Rivera\Documents\Visual Studio 2013\Projects\InventoryApplication\InventoryApplication\obj\Release\InventoryApplication.csprojResolveAssemblyReference.cache
 C:\Users\Enrique Rivera\Documents\Visual Studio 2013\Projects\InventoryApplication\InventoryApplication\obj\Release\InventoryApplication.AddArrive.resources
 C:\Users\Enrique Rivera\Documents\Visual Studio 2013\Projects\InventoryApplication\InventoryApplication\obj\Release\InventoryApplication.AddDeparture.resources
+C:\Users\Enrique Rivera\Documents\Visual Studio 2013\Projects\InventoryApplication\InventoryApplication\obj\Release\InventoryApplication.csprojResolveAssemblyReference.cache

@@ -14,6 +14,7 @@
     <EntitySetMapping Name="Departures">
       <EntityTypeMapping TypeName="InventoryDatabaseModel.Departure">
         <MappingFragment StoreEntitySet="Departures">
+          <ScalarProperty Name="Area" ColumnName="Area" />
           <ScalarProperty Name="Folio" ColumnName="Folio" />
           <ScalarProperty Name="Petitioner" ColumnName="Petitioner" />
           <ScalarProperty Name="Date" ColumnName="Date" />

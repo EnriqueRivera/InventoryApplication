@@ -23,6 +23,9 @@ namespace Model
             {
                 _db = _db ?? new InventoryDatabaseEntities();
 
+                if (_db.Database.Connection.State == System.Data.ConnectionState.Closed)
+                    _db.Database.Connection.Open();
+
                 return _instance ?? new Provider();
             }
         }
